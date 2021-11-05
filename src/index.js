@@ -24,5 +24,7 @@ const pictures = {
 }
 
 
+// key: 563492ad6f91700001000001346204d6cc5d4973a3d0c717f03cff8
+// https://api.pexels.com/v1/search?query=people
 
 // https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=что_искать&page=номер_страницы&per_page=12&key=твой_ключ
