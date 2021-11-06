@@ -85,8 +85,14 @@ function loadMoreBtnHandler() {
     const markup = buildListItemsTemplate(hits);
     iserListItems(markup);
 
+    window.scrollTo(0, 1000);
+
+    window.scrollTo({
+      top: 1000,
+      behavior: 'smooth',
+    });
     // const element = document.getElementById('.my-element-selector');
-    // // element.scrollIntoView(0, 1000);
+    // element.scrollIntoView(0, 1000);
 
     // element.scrollIntoView({
     //     behavior: 'smooth',
