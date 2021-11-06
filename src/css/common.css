@@ -9,7 +9,6 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.5;
   color: #2a2a2a;
-  background-color:rgb(192, 190, 192);
 }
 
 img {
@@ -19,20 +18,53 @@ img {
 }
 
 .search-form {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-  }
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 24px;
+}
 
-  .input {
-    display: block;
-    padding: 8px;
-    background-color: rgb(247, 207, 240);
-    border: 0px;
-  }
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .container {
-    width: 380px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.button.is-hidden {
+  display: none;
+}
+
+.button > .spinner.is-hidden {
+  display: none;
+}
+
+/* Article List */
+.articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: calc(100vw - 80px);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.articles li {
+  height: 450px;
+  overflow: hidden;
+}
+
+.articles img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.articles a {
+  text-decoration: none;
+  color: #2a2a2a;
+}
