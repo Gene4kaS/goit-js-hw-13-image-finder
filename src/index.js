@@ -24,16 +24,21 @@ function onSearch(element) {
   apiServise.resetPage();
   apiServise.searchQuerry = input.value;
 
+  if (!apiServise.searchQuerry.trim() || apiServise.searchQuerry === '') {
+    return alert('ENTRY ERROR');
+  }
+
   apiServise.fetcArticles().then(hits => {
     const markup = buildListItemsTemplate(hits);
     useListItems(markup);
   });
   input.value = '';
+
 }
 
 function useListItems(items) {
     refs.gallery.insertAdjacentHTML('beforeend', items);
-    scrollInto();
+   scrollInto(); 
   }
 
   function buildListItemsTemplate(items) {
@@ -41,10 +46,12 @@ function useListItems(items) {
   }
 
 function loadMoreBtnHandler() {
-    apiServise.fetcArticles().then(hits => {
+    apiServise.fetcArticles()
+    .then(hits => {
     const markup = buildListItemsTemplate(hits);
     useListItems(markup);
-  });
+  })
+  .catch(hits => alert(`Error: ${hits}`));
 }
 
 function scrollInto() {
@@ -54,6 +61,15 @@ function scrollInto() {
     })
 }
 
+
+// window.addEventListener('scroll', () => {
+//     const documentRect = document.documentElement.getBoundingClientRect();
+//     if (documentRect.bottom < document.documentElement.clientHeight + 200) {
+//         apiServise.page++;
+//         cardsGallery(items);
+//     }
+    
+// })
 
 // [].forEach.call(document.getElementsByClassName('number'), e => 
 // e.textContent = e.textContent.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
