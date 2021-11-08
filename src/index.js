@@ -4,6 +4,7 @@ import cardsGallery from './templates/gallery-card.hbs';
 import * as PNotify from "@pnotify/core";
 import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/core/dist/BrightTheme.css";
+import largeImgModal from './js/largeImgModal';
 
 const myStack = new PNotify.Stack({
     dir1: "up",
@@ -21,16 +22,9 @@ const refs = {
     searchForm: document.querySelector('#search-form'),
     gallery: document.querySelector('.gallery'),
     loadMoreBtn: document.querySelector('button[data-action="load-more"]'),
-    modal: document.getElementById('modal-js'),
-    largeImg: document.querySelector('.image-large'),
 };    
 
 refs.searchForm.addEventListener('submit', onSearch);
-refs.gallery.addEventListener('click', showLargeImg);
-refs.modal.addEventListener('click', () => {
-  refs.modal.style.display = 'none';
-  setAttrImg('', '', 'hidden');
-});
 // refs.loadMoreBtn.addEventListener('click', loadMore);
 
 
@@ -56,6 +50,7 @@ function fetchGallery() {
     apiServise.fetchArticles().then(hits => {
         refs.gallery.insertAdjacentHTML('beforeend', cardsGallery(hits));
   })
+  .then(largeImgModal()) 
   .catch(console.log(onError()));
 }
 
@@ -81,18 +76,3 @@ function loadMore() {
 // [].forEach.call(document.getElementsByClassName('number'), e => 
 // e.textContent = e.textContent.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
 
-function showLargeImg(element) {
-    if (!element.target.dataset.src) return;
-    refs.modal.style.display = 'flex';
-    setAttrImg(element.target.dataset.src, element.target.alt, 'show');
-  }
-  
-  function setAttrImg(src, alt, status) {
-    refs.largeImg.src = src;
-    refs.largeImg.alt = alt;
-    if (status === 'show') 
-         refs.largeImg.classList.add('js-show');
-    else refs.largeImg.classList.remove('js-show');
-    return;
-  }
-  
