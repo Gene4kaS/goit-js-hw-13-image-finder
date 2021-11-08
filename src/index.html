@@ -16,14 +16,16 @@
           type="text"
           name="query"
           autocomplete="off"
-          placeholder="Search images..."
-      />
-      <button type="submit" class="btn">Search</button>
-      </form>
+          placeholder="Search images..."/>
+        <button type="submit" class="btn">Search</button>
+    </form>
       <ul class="gallery" id="my-element-selector">
         <!-- Список <li> с карточками изображений -->
       </ul>
       <button class="button" type="button" data-action="load-more">Load more</button>
+    <div class="modal" id="modal-js" style="display: none;">
+      <img src="" alt="" class="image-large js-show">
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
