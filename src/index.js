@@ -40,6 +40,7 @@ function onSearch(element) {
   clearListItems();
   apiServise.resetPage();
   fetchGallery();
+  numberWithSpaces();
 
   if (!apiServise.searchQuerry.trim()) {
     return alert('ENTRY ERROR');
@@ -51,7 +52,7 @@ function fetchGallery() {
         refs.gallery.insertAdjacentHTML('beforeend', cardsGallery(hits));
   })
   .then(largeImgModal()) 
-  .catch(console.log(onError()));
+  .catch(onError());
 }
 
 function scroll() {
@@ -73,6 +74,7 @@ function loadMore() {
     scroll();
   };
 
-// [].forEach.call(document.getElementsByClassName('number'), e => 
-// e.textContent = e.textContent.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+  function numberWithSpaces(x) {
+        return x.target.classList('number').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  } 
 
