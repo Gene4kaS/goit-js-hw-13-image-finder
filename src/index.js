@@ -39,7 +39,7 @@ function onSearch(element) {
 
   clearListItems();
   apiServise.resetPage();
-  numberWithSpaces();
+//   numberWithSpaces();
 
   if (!apiServise.searchQuerry.trim()) {
     return alert('ENTRY ERROR');
