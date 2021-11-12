@@ -37,43 +37,6 @@ function onModalClick(evt) {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
         onCloseLightBoxClick();
-    }
-  })
-
-  document.addEventListener("keydown", (evt) => {
-    const galleryItems = target.classList.contains('gallery__image');
-    const currentIndex = galleryItems.findIndex(
-      (img) => img.original === imageLightBox.src
-    );
-    if (evt.key === "ArrowLeft") {
-      leftClick(currentIndex);
-    } else 
-    if (evt.key === "ArrowRight") {
-      rightClick(currentIndex);
-    }
-  });
-  
-  function leftClick(currentIndex) {
-    let nextIndex = currentIndex ? currentIndex : 0;
-  
-    if (nextIndex > 0) {
-      nextIndex -= 1;
-    } else {
-      nextIndex = galleryItems.length - 1;
-    }
-    imageLightBox.src = galleryItems[nextIndex].original;
-    imageLightBox.alt = galleryItems[nextIndex].alt;
-  }
-  
-  function rightClick(currentIndex) {
-    let nextIndex = currentIndex ? currentIndex : 0;
-  
-    if (nextIndex < galleryItems.length - 1) {
-      nextIndex += 1;
-    } else {
-      nextIndex = 0;
-    }
-    imageLightBox.src = galleryItems[nextIndex].original;
-    imageLightBox.alt = galleryItems[nextIndex].alt;
-  }
+      }
+    })
   }
