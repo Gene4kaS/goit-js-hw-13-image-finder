@@ -74,7 +74,7 @@ function loadMore() {
     scroll();
   };
 
-  function numberWithSpaces(x) {
-        return x.target.classList('number').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  } 
+//   function numberWithSpaces(x) {
+//         return x.target.classList('number').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+//   } 
 
