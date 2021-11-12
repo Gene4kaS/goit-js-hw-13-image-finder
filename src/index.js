@@ -39,7 +39,6 @@ function onSearch(element) {
 
   clearListItems();
   apiServise.resetPage();
-  fetchGallery();
   numberWithSpaces();
 
   if (!apiServise.searchQuerry.trim()) {
@@ -73,8 +72,4 @@ function loadMore() {
     fetchGallery()
     scroll();
   };
-
-//   function numberWithSpaces(x) {
-//         return x.target.classList('number').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-//   } 
 
