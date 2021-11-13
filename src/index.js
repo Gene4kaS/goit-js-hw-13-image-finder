@@ -5,6 +5,7 @@ import * as PNotify from "@pnotify/core";
 import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/core/dist/BrightTheme.css";
 import largeImgModal from './js/largeImgModal';
+import { throttle } from 'lodash';
 
 const myStack = new PNotify.Stack({
     dir1: "up",
@@ -42,7 +43,7 @@ function onSearch(element) {
   fetchGallery();
 
   if (!apiServise.searchQuerry.trim()) {
-    return alert('ENTRY ERROR');
+    return onError;
   }
 }
 
@@ -61,12 +62,12 @@ function scroll() {
     })
 }
 
-document.addEventListener('scroll', () => {
+window.addEventListener('scroll', throttle(() => {
     const documentRect = document.documentElement.getBoundingClientRect();
     if (documentRect.bottom < document.documentElement.clientHeight + 200) {
         loadMore();
     }
-})
+}, 500))
 
 function loadMore() {
     fetchGallery()
