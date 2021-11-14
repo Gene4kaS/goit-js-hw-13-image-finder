@@ -9,10 +9,11 @@ body {
     Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   line-height: 1.5;
   color: #2a2a2a;
-  background-image: url('../image/background.jpg');
+  background-image: url('../image/background2.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  margin: 0;
 }
 
 img {
