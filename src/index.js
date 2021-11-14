@@ -6,6 +6,7 @@ import * as PNotifyMobile from "@pnotify/mobile";
 import "@pnotify/core/dist/BrightTheme.css";
 import largeImgModal from './js/largeImgModal';
 import { throttle } from 'lodash';
+import SimpleLightbox from "simplelightbox";
 
 const myStack = new PNotify.Stack({
     dir1: "up",
@@ -33,6 +34,11 @@ const refs = {
 
 refs.searchForm.addEventListener('submit', onSearch);
 // refs.loadMoreBtn.addEventListener('click', loadMore);
+
+const gallery = new SimpleLightbox('.gallery');
+gallery.on('show.simplelightbox', function () {
+	// do something…
+});
 
 
 function clearListItems() {
