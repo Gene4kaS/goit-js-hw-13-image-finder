@@ -14,7 +14,13 @@ const myStack = new PNotify.Stack({
 function onError() {
     return PNotify.notice({
             text: "Please, enter a correct request!",
+            title: 'ERROR!',
             stack: myStack,
+            closer: false,
+            sticker: false,
+            hide: true,
+            delay: 500,
+            remove: true,
             modules: new Map([...PNotify.defaultModules, [PNotifyMobile, {}]]),
           });
   }
@@ -36,23 +42,22 @@ function clearListItems() {
 
 function onSearch(element) {
   element.preventDefault();
-  apiServise.searchQuerry = element.currentTarget.elements.query.value;
-
+  apiServise.searchQuerry = element.currentTarget.elements.query.value.trim();
+  if (!apiServise.query) return onError();
   clearListItems();
   apiServise.resetPage();
   fetchGallery();
-
-  if (!apiServise.searchQuerry.trim()) {
-    return onError;
-  }
 }
 
 function fetchGallery() {
     apiServise.fetchArticles().then(hits => {
-        refs.gallery.insertAdjacentHTML('beforeend', cardsGallery(hits));
+    refs.gallery.insertAdjacentHTML('beforeend', cardsGallery(hits));
+
+    if (data.length <= 0) return onError();
+    if (data.length <= 12) return;
   })
   .then(largeImgModal()) 
-  .catch(onError());
+  .catch(onError);
 }
 
 function scroll() {
